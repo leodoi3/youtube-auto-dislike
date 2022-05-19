@@ -29,5 +29,8 @@ If applicable, add screenshots to help explain your problem.
 
 **Specification**
  - OS: [e.g. Windows 10]
- - Browser version [e.g. Firefox 75]
- - Plugin version [e.g. 1.0.1]
+ - Browser version: [e.g. Firefox 75]
+ - Plugin version: [e.g. 1.0.1]
+ - YouTube Premium: [e.g. yes]
+ - Youtube Player: [e.g. normal, large Theater, ... ]
+ - Youtube Country: [e.g. ES]
