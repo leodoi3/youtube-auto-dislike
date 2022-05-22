@@ -165,15 +165,22 @@ class MaterialLiker {
 	}
 
 	/**
+	 * Search video across all dom each time, to prevent modification (see #59)
+	 * A mutation observer could be done, but may be overkill
+	 */
+	video() {
+		return document.querySelectorAll(".video-stream")[0];
+	}
+
+	/**
 	* Detects when the video player has loaded
 	* @param  {function} callback The function to execute once the video has
 	*     loaded.
 	*/
 	waitForVideo(callback) {
-		this.video = document.querySelector('.video-stream');
-		if (this.video) {
+		if (this.video()) {
 			log("Get Video.")
- 			callback();
+			callback();
 		} else {
 			setTimeout(() => this.waitForVideo(callback), 1000);
 		}
@@ -197,16 +204,18 @@ class MaterialLiker {
 	waitTimer(callback) {
 		// if Instant like, direct return to like
 		if (this.options.like_timer == "instant") {
+			log("waitTimer: instant")
 			callback();
 			return;
 		}
-		else if (this.video.closest(".ad-showing,.ad-interrupting") !== null) {
+		else if (this.video().closest(".ad-showing,.ad-interrupting") !== null) {
+			log("waitTimer: ad")
 			setTimeout(() => this.waitTimer(callback), 1000 );
 		}
 		else if (this.options.like_timer == "random") {
-			let duration = this.video.duration;
+			let duration = this.video().duration;
 
-			let nowInPercent = this.video.currentTime / duration * 100;
+			let nowInPercent = this.video().currentTime / duration * 100;
 
 			if (nowInPercent >= this.randomTimerPercent) {
 				callback();
@@ -215,11 +224,13 @@ class MaterialLiker {
 			}
 		}
 		else {
-			let duration = this.video.duration;
+			let duration = this.video().duration;
 
 			if (this.options.percentage_timer) {
+				log("waitTimer: percent")
 				let percentageAtLike = this.options.percentage_value;
-				let nowInPercent = this.video.currentTime / duration * 100;
+				let nowInPercent = this.video().currentTime / duration * 100;
+				log(nowInPercent, percentageAtLike)
 
 				if (nowInPercent >= percentageAtLike) {
 					callback();
@@ -228,15 +239,17 @@ class MaterialLiker {
 			}
 
 			if (this.options.minute_timer) {
+				log("waitTimer: minute")
 				let timeAtLike = this.options.minute_value;
 				// change timeAtLike if vid shorter than time set by user
-				if (this.video.duration < timeAtLike) {
-					timeAtLike = this.video.duration;
+				log(this.video().currentTime, this.video().duration, timeAtLike)
+				if (this.video().duration < timeAtLike) {
+					timeAtLike = this.video().duration;
 				} else {
 					// convert in second
 					timeAtLike *= 60;
 				}
-				if (this.video.currentTime >= timeAtLike) {
+				if (this.video().currentTime >= timeAtLike) {
 					callback();
 					return;
 				}
@@ -259,7 +272,7 @@ class MaterialLiker {
 	 * @param {function} callback The function to execute when timer is over
 	 */
 	waitTimerTwo(timer, callback) {
-		if (this.video.currentTime >= timer) {
+		if (this.video().currentTime >= timer) {
 			callback();
 			return;
 		}
@@ -273,7 +286,7 @@ class MaterialLiker {
 	 * @param {function} callback The function to execute when timer is over
 	 */
 	startTimer(timer, callback) {
-		let duration = this.video.duration;
+		let duration = this.video().duration;
 		// change timer if vid shorter than time requested
 		if (duration < timer) {
 			timer = duration;
@@ -390,13 +403,16 @@ class MaterialLiker {
 		//if not defined this is the 1st run
 		if (!this.hasOwnProperty("IS_STARTED")) { 
 			this.IS_STARTED = true;
-			return;
+			log("blockMultipleRun: allow")
+			return false;
 		} else {
 			if (this.IS_STARTED) {
-				throw "Multiple run";
+				log("blockMultipleRun: blocked");
+				return true
 			} else { //could be a new video in playlist
 				this.IS_STARTED = true;
-				return;
+				log("blockMultipleRun: allow, next video in playlist")
+				return false;
 			}
 		}
 	}
@@ -426,7 +442,9 @@ class MaterialLiker {
 			return;
 		}
 
-		this.blockMultipleRun();
+		if (this.blockMultipleRun()) {
+			return;
+		}
 		this.reset()
 		log('yt-autolike start')
 		// this.skipAd(() => {
