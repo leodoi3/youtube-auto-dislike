@@ -324,6 +324,12 @@ class MaterialLiker {
 		let subscribeButton = document.querySelector(
 			'ytd-subscribe-button-renderer > paper-button, ytg-subscribe-button > paper-button, ytd-subscribe-button-renderer > .ytd-subscribe-button-renderer'
 		);
+		// if new youtube 06/2022
+		if (subscribeButton.hasAttribute("hidden")) {
+			subscribeButton = document.querySelector(
+				'ytd-subscribe-button-renderer > tp-yt-paper-button.ytd-subscribe-button-renderer'
+			)
+		}
 		return subscribeButton && (subscribeButton.hasAttribute('subscribed') ||
 			subscribeButton.getAttribute("aria-pressed") === "true");
 	}	
