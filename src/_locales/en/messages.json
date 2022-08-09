@@ -1,9 +1,9 @@
 {
   "appName": {
-    "message": "YouTube Auto Like"
+    "message": "YouTube Auto Dislike"
   },
   "appDesc": {
-    "message": "Never forget to like a video again."
+    "message": "Never forget to dislike a video again."
   },
   "optLikeWhatTitle": {
     "message": "Which videos?"

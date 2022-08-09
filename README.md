@@ -1,5 +1,10 @@
 <img width="100" height="100" src="https://i.imgur.com/CwAIwN6.png" align="right" />
 
+## Compilation
+
+- npm run build
+- npx webpack
+
 # YouTube Auto Like
 
 Never forget to like a video again.

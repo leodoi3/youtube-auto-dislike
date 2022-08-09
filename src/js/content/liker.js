@@ -1,7 +1,7 @@
 /**
  * Likes YouTube videos
  */
-const selectors = {
+ const selectors = {
   likeButton:
     '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) yt-icon-button',
   dislikeButton:
@@ -143,7 +143,7 @@ export default class Liker {
    * Make sure we can & should like the video,
    * then clickity click the button
    */
-  async clickLike() {
+  async clickDislike() {
     await this.waitForButtons();
     /*
     If the video is already liked/disliked
@@ -159,8 +159,8 @@ export default class Liker {
       return this.pause();
     }
 
-    this.cache.likeButton.click();
-    this.log('like button clicked');
+    this.cache.dislikeButton.click();
+    this.log('dislike button clicked');
     this.pause();
   }
 
@@ -181,7 +181,7 @@ export default class Liker {
           if (this.isAdPlaying()) return;
           // Are we more than the chosen mins in or at the end of the video?
           if (video.currentTime >= minutes * 60 || video.currentTime >= video.duration) {
-            this.clickLike();
+            this.clickDislike();
             video.removeEventListener('timeupdate', onVideoTimeUpdate);
           }
         };
@@ -197,7 +197,7 @@ export default class Liker {
           if (this.isAdPlaying()) return;
           // Are we more than the chosen percent through the video?
           if (video.currentTime / video.duration >= percent) {
-            this.clickLike();
+            this.clickDislike();
             video.removeEventListener('timeupdate', onVideoTimeUpdate);
           }
         };
@@ -206,7 +206,7 @@ export default class Liker {
       }
 
       default:
-        this.clickLike();
+        this.clickDislike();
     }
   }
 }
