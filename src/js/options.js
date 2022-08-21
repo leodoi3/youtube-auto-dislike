@@ -6,7 +6,8 @@ const defaults = {
   like_when: 'instantly',
   like_when_minutes: '2',
   like_when_percent: '50',
-  disabled: false,
+  disabled: true,
+  use_list: "yes"
 };
 const optionManager = new OptionManager(defaults);
 const i18n = new I18n();
@@ -22,13 +23,15 @@ __________________________
 i18n.populateText();
 
 const loadOptions = async () => {
-  const options = await optionManager.get();
+ // const options = await optionManager.get();
+  const options = await optionManager.defaults
+  //console.log(options)
+  console.log(document.querySelectorAll('input'))
 
   document.querySelectorAll('input').forEach((field) => {
-    if (!options.hasOwnProperty(field.name)) return;
-
+   // if (!options.hasOwnProperty(field.name)) return;
     const val = options[field.name];
-
+console.log(field.name + val)
     if (field.type === 'radio' || field.type === 'checkbox') {
       field.checked = field.value === val;
     } else {
