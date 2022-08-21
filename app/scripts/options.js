@@ -52,18 +52,16 @@ function isHome(url) {
 }
 
 async function getCurrentWindowTabs() {
-	return browser.tabs.query({currentWindow: true, active: true});
+	return chrome.tabs.query({currentWindow: true, active: true});
 }
 
 // Maybe useless for now because in manifest we have activeTab only but when switch to tabs in manifest
 // this will still work
 async function getActiveTab() {
-	let tabs = await browser.tabs.query({currentWindow: true, active: true});
-	for (let tab of tabs) {
-		if (tab.active) {
-			return tab;
-		}
-	}
+	const activeTab = (await chrome.tabs.query({currentWindow: true, active: true}))?.[0]
+
+	return activeTab
+
 }
 
 
@@ -72,7 +70,7 @@ async function callCreatorFromVideo(tab) {
 }
 
 async function callCreatorFromHome(tab) {
-	let creator = await browser.tabs.sendMessage(tab.id, "get_creator_from_home");
+	let creator = await chrome.tabs.sendMessage(tab.id, "get_creator_from_home");
 	return creator
 }
 
@@ -114,9 +112,11 @@ function removeThisCreator() {
 		});
 	});
 }
+async function displayAddRmButton() {
+	const activeTab = (await chrome.tabs.query({currentWindow: true, active: true}))?.[0];
+	console.log("the tab is: " + activeTab)
 
-function displayAddRmButton() {
-	getActiveTab().then((tab) => {
+
 		if (tab.url === undefined) tab.url = ""
 		if (isVideo(tab.url)) {
 			getThisCreator(tab).then((creator) => {
@@ -133,8 +133,7 @@ function displayAddRmButton() {
 				});
 			});
 		}
-	})
-	.catch( (e) => console.error(e) );
+	
 }
 
 function refreshCounter() {

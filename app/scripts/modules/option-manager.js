@@ -16,8 +16,10 @@ class OptionManager {
 	 * @return {Promise} Contains options object on resolve
 	 */
 	get() {
-		return browser.storage.local.get(this.defaults);
-	}
+		return new Promise((resolve, reject) => {
+			chrome.storage.sync.get({ options: this.defaults }, items => resolve(items.options));
+		  });	
+		}
 
 	/*
 	 * Set options
@@ -25,6 +27,7 @@ class OptionManager {
 	 * @return {Promise} Will resolve when successful
 	 */
 	set(options) {
-		return browser.storage.local.set(options);
-	}
+		return new Promise((resolve, reject) => {
+			chrome.storage.sync.set({ options }, resolve);
+		  });	}
  }

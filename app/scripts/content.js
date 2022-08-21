@@ -14,7 +14,7 @@ let optionManager = new OptionManager(OPTIONS);
 var log = () => {}
 
 // Add a listener to get the creator
-browser.runtime.onMessage.addListener( function(msg, sender, sendResponse) {
+chrome.runtime.onMessage.addListener( function(msg, sender, sendResponse) {
 	log("New message received");
 	// If the received message has the expected format...
 	if (msg === "get_creator_from_video") {

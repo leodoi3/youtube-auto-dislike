@@ -15,16 +15,16 @@ function handleInstalled(details) {
 	let optionManager = new OptionManager(OPTIONS);
 	optionManager.get().then((options) => {
 		// if this is a new version display patch note
-		if ( isNewVersion(options.plugin_version, browser.runtime.getManifest().version) ) {
-			browser.tabs.create({
+		if ( isNewVersion(options.plugin_version, chrome.runtime.getManifest().version) ) {
+			chrome.tabs.create({
 				url: "update_info.html"
 			});
 			// save the new version number
-			options.plugin_version = browser.runtime.getManifest().version;
+			options.plugin_version = chrome.runtime.getManifest().version;
 			optionManager.set(options);
 		}
 		//browser.storage.local.clear();
 	});	
 }
 // triggered when new  version installed
-browser.runtime.onInstalled.addListener(handleInstalled);
+chrome.runtime.onInstalled.addListener(handleInstalled);
