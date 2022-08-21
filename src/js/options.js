@@ -87,4 +87,9 @@ async function checkForSavedRelease() {
   });
 }
 
+document.getElementById("list-manage").addEventListener( 'click', () => {
+  window.open("./manage.html");
+  window.close()
+});
+
 checkForSavedRelease();

@@ -37,5 +37,11 @@
   },
   "reloadNotice": {
     "message": "Reload the page to apply changes."
-  }
+  },
+  "mngName": {
+    "message": "Channel name"
+  },
+  "mngURL": {
+		"message": "Channel URL"
+	}
 }

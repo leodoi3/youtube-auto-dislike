@@ -17,6 +17,7 @@ module.exports = {
   entry: {
     content: `${paths.src}/js/content.js`,
     options: `${paths.src}/js/options.js`,
+    manage: `${paths.src}/js/manage.js`,
     background: `${paths.src}/js/background.js`,
   },
 
@@ -33,6 +34,7 @@ module.exports = {
       patterns: [
         `${paths.src}/manifest.json`,
         { from: `${paths.src}/options.html`, context: paths.src },
+        { from: `${paths.src}/manage.html`, context: paths.src },
         { from: `${paths.src}/_locales`, to: `${paths.build}/_locales` },
         { from: `${paths.src}/css`, to: `${paths.build}/css` },
         { from: `${paths.src}/images`, to: `${paths.build}/images` },
