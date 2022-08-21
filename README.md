@@ -1,7 +1,11 @@
 <img width="100" height="100" src="https://i.imgur.com/CwAIwN6.png" align="right" />
 
 ## Compilation
-
+- npm install -g win-node-env
+- npm install -g webpack
+- npm install -g webpack-cli
+- npm install -g clean-webpack-plugin
+- npm install webpack-run-chrome-extension
 - npm run build
 - npx webpack
 
