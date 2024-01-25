@@ -1,14 +1,23 @@
+const selectors = {
+  likeButton: [
+    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) yt-icon-button',
+    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) button',
+    '#segmented-like-button button',
+  ],
+  dislikeButton: [
+    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button',
+    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) button',
+    '#segmented-dislike-button button',
+  ],
+  subscribeButton: [
+    '#subscribe-button tp-yt-paper-button',
+    '#subscribe-button button',
+  ],
+};
+
 /**
  * Likes YouTube videos
  */
- const selectors = {
-  likeButton:
-    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(1) yt-icon-button',
-  dislikeButton:
-    '#top-level-buttons-computed > ytd-toggle-button-renderer:nth-child(2) yt-icon-button',
-  subscribeButton: '#subscribe-button tp-yt-paper-button',
-};
-
 export default class Liker {
   /**
    * @param {Object} options
@@ -29,7 +38,9 @@ export default class Liker {
     /*
     We're hooking into YouTube's custom events to determine when the page changes.
      */
-    document.querySelector('ytd-app').addEventListener('yt-page-data-updated', this.start);
+    document
+      .querySelector('ytd-app')
+      .addEventListener('yt-page-data-updated', this.start);
 
     this.start();
   }
@@ -59,8 +70,10 @@ export default class Liker {
 
     return new Promise((resolve) => {
       const interval = setInterval(() => {
-        const likeButton = document.querySelector(selectors.likeButton);
-        const dislikeButton = document.querySelector(selectors.dislikeButton);
+        const likeButton = document.querySelectorAll(selectors.likeButton)[0];
+        const dislikeButton = document.querySelectorAll(
+          selectors.dislikeButton
+        )[0];
         // Make sure both buttons exist
         if (likeButton && dislikeButton) {
           // Store buttons
@@ -101,7 +114,9 @@ export default class Liker {
     return (
       (this.cache.likeButton.classList.contains('style-default-active') &&
         !this.cache.likeButton.classList.contains('size-default')) ||
-      this.cache.dislikeButton.classList.contains('style-default-active')
+      this.cache.dislikeButton.classList.contains('style-default-active') ||
+      this.cache.likeButton.getAttribute('aria-pressed') === 'true' ||
+      this.cache.dislikeButton.getAttribute('aria-pressed') === 'true'
     );
   }
 
@@ -112,11 +127,20 @@ export default class Liker {
   isUserSubscribed() {
     // Select the sub button
     const subscribeButton =
-      this.cache.subscribeButton || document.querySelector(selectors.subscribeButton);
+      this.cache.subscribeButton ||
+      document.querySelectorAll(selectors.subscribeButton)[0];
+
     // Does the button exist?
-    if (!subscribeButton) return false;
+    if (!subscribeButton) {
+      this.log('no subscribe button found');
+      return false;
+    }
+
     // Is the button active?
-    if (subscribeButton.hasAttribute('subscribed')) {
+    if (
+      subscribeButton.hasAttribute('subscribed') ||
+      subscribeButton.classList.contains('yt-spec-button-shape-next--tonal')
+    ) {
       this.cache.subscribeButton = subscribeButton;
       return true;
     }
@@ -134,7 +158,9 @@ export default class Liker {
     return (
       this.cache.video &&
       ['ad-showing', 'ad-interrupting'].every((c) => {
-        return this.cache.video.closest('.html5-video-player').classList.contains(c);
+        return this.cache.video
+          .closest('.html5-video-player')
+          .classList.contains(c);
       })
     );
   }
@@ -180,8 +206,11 @@ export default class Liker {
         const onVideoTimeUpdate = (e) => {
           if (this.isAdPlaying()) return;
           // Are we more than the chosen mins in or at the end of the video?
-          if (video.currentTime >= minutes * 60 || video.currentTime >= video.duration) {
-            this.clickDislike();
+          if (
+            video.currentTime >= minutes * 60 ||
+            video.currentTime >= video.duration
+          ) {
+            this.clickLike();
             video.removeEventListener('timeupdate', onVideoTimeUpdate);
           }
         };

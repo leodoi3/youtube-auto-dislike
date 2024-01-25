@@ -5,12 +5,6 @@
   "appDesc": {
     "message": "Automatycznie lubi filmy od twoich ulubionych twórców."
   },
-  "appStoreDesc": {
-    "message": "Automatycznie naciśnięcie przycisku \"Lubię to\", gdy oglądasz film z subskrybowanego kanału! Nie wymaga żadnego wysiłku. Brak uwierzytelnienia twojego konta. Jeśli film ci się nie podoba, rozszerzenie nie zmieni twojego wyboru. Dodatkowo możesz: - Być bardziej wybiórczym: Lubić filmy dopiero po obejrzeniu 2 minut! - Automatycznie lubić KAŻDY film. Jesteś szalony! Zaproponuj nowe funkcje lub współtwórz:"
-  },
-  "appStoreContribute": {
-    "message": "Contribute"
-  },
   "optLikeWhatTitle": {
     "message": "Które filmy?"
   },
@@ -35,13 +29,28 @@
   "optLikePercent": {
     "message": "procent"
   },
-  "linkDonate": {
-    "message": "Wspomóż!"
-  },
   "linkReport": {
     "message": "Zgłoś błąd"
   },
   "reloadNotice": {
     "message": "Reload the page to apply changes."
+  },
+  "updateNotice": {
+    "message": "Hey! There's a newer version available."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "See releases"
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "donateAppeal": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
   }
 }

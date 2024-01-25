@@ -1,7 +1,7 @@
 {
   "name": "youtube-auto-like",
   "description": "Never forget to like a video again.",
-  "version": "2.7.1",
+  "version": "2.7.5",
   "homepage": "https://github.com/austencm/youtube-auto-like",
   "author": "Austen Morgan <heyausten@gmail.com> (https://github.com/austencm)",
   "license": "MIT",
@@ -33,6 +33,7 @@
     "UtkuGARIP (https://github.com/UtkuGARIP)"
   ],
   "scripts": {
+    "postinstall": "npm run build",
     "start": "NODE_ENV=development webpack",
     "build": "NODE_ENV=production webpack"
   },
@@ -40,7 +41,7 @@
     "clean-webpack-plugin": "*",
     "copy-webpack-plugin": "^7.0.0",
     "webpack": "^5.37.1",
-    "webpack-run-chrome-extension": "^0.3.0",
+    "webpack-run-chrome-extension": "^0.6.0",
     "zip-webpack-plugin": "^4.0.1"
   },
   "dependencies": {

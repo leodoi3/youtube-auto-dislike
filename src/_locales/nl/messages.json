@@ -5,12 +5,6 @@
   "appDesc": {
     "message": "Liked de YouTube videos van je favoriete content makers automagisch."
   },
-  "appStoreDesc": {
-    "message": "Het enige wat deze extensie doet, is het indrukken van de like knop van videos van kanalen waarop je bent geabonneerd. Geen inspanning vereist. Geen authenticatie vereist. Je kunt zelfs ELKE video liken."
-  },
-  "appStoreContribute": {
-    "message": "Schroom niet om suggesties achter te laten"
-  },
   "optLikeWhatTitle": {
     "message": "Welche videos?"
   },
@@ -35,16 +29,28 @@
   "optLikePercent": {
     "message": "procent"
   },
-  "linkDonate": {
-    "message": "Doneer"
-  },
-  "linkContribute": {
-    "message": "Bijdragen"
-  },
   "linkReport": {
     "message": "Niet werken?"
   },
   "reloadNotice": {
     "message": "Reload the page to apply changes."
+  },
+  "updateNotice": {
+    "message": "Hey! There's a newer version available."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "See releases"
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "donateAppeal": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
   }
 }

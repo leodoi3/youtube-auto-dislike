@@ -1,15 +1,9 @@
 {
-	"appName": {
-		"message": "YouTube Auto Like"
-	},
-	"appDesc": {
-		"message": "Este plugin like automaticamente los videos de YouTube."
-	},
-  "appStoreDesc": {
-    "message": "Este plugin like automáticamente los vídeos de YouTube. Puedes elegir de utilizar el plugin en todos los vídeos o unicamente en los vídeos suscribidos,  tambien puedes desactivar el plugin. Puedes poner un dislike en un vídeo, despues el plugin no pondra like automáticamente. Ninguna conexión necesitada. Puedes señalar problemas, proponer ideos y contribuir."
+  "appName": {
+    "message": "YouTube Auto Like"
   },
-  "appStoreContribute": {
-    "message": "Contribuir"
+  "appDesc": {
+    "message": "Este plugin like automaticamente los videos de YouTube."
   },
   "optLikeWhatTitle": {
     "message": "¿Qué videos?"
@@ -17,15 +11,15 @@
   "optLikeWhenTitle": {
     "message": "¿Cuan rápido?"
   },
-	"optLikeSub": {
-		"message": "Like los videos de los canales suscritos"
-	},
-	"optLikeAll": {
-		"message": "Like todos los videos"
-	},
+  "optLikeSub": {
+    "message": "Like los videos de los canales suscritos"
+  },
+  "optLikeAll": {
+    "message": "Like todos los videos"
+  },
   "optDisable": {
-		"message": "Desactivar"
-	},
+    "message": "Desactivar"
+  },
   "optLikeInstant": {
     "message": "Instantáneamente"
   },
@@ -35,13 +29,28 @@
   "optLikePercent": {
     "message": "por ciento"
   },
-  "linkDonate": {
-    "message": "Alimente a mis gatos"
-  },
   "linkReport": {
     "message": "¿No funciona?"
   },
   "reloadNotice": {
     "message": "Recarga la página para ver cambios."
+  },
+  "updateNotice": {
+    "message": "Hey! There's a newer version available."
+  },
+  "download": {
+    "message": "Download"
+  },
+  "seeReleases": {
+    "message": "See releases"
+  },
+  "saving": {
+    "message": "Saving..."
+  },
+  "donateAppeal": {
+    "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
   }
 }
