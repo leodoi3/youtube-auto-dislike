@@ -2,10 +2,7 @@
 
 ## Compilation
 - npm install -g win-node-env
-- npm install -g webpack
-- npm install -g webpack-cli
-- npm install -g clean-webpack-plugin
-- npm install webpack-run-chrome-extension
+- npm install 
 - npm run build
 - npx webpack
 
