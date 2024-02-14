@@ -3,40 +3,40 @@
     "message": "YouTube Auto Like"
   },
   "appDesc": {
-    "message": "Liked de YouTube videos van je favoriete content makers automagisch."
+    "message": "Este plugin like automaticamente los videos de YouTube."
   },
   "optLikeWhatTitle": {
-    "message": "Welke videos?"
+    "message": "¿Qué videos?"
   },
   "optLikeWhenTitle": {
-    "message": "Wanneer?" 
+    "message": "¿Cuan rápido?"
   },
   "optLikeSub": {
-    "message": "Alleen van geabonneerde kanalen."
+    "message": "Like los videos de los canales suscritos"
   },
   "optLikeAll": {
-    "message": "Alle videos. "
+    "message": "Like todos los videos"
   },
   "optDisable": {
-    "message": "Extensie uischakelen"
+    "message": "Desactivar"
   },
   "optLikeInstant": {
-    "message": "direct"
+    "message": "Instantáneamente"
   },
   "optLikeTimed": {
-    "message": "minuten"
+    "message": "minutos"
   },
   "optLikePercent": {
-    "message": "procent"
+    "message": "por ciento"
   },
   "linkReport": {
-    "message": "Foutje gevonden?"
+    "message": "¿No funciona?"
   },
   "reloadNotice": {
-    "message": "Herlaad de pagina om de veranderingen door te bevestigen."
+    "message": "Recarga la página para ver cambios."
   },
   "updateNotice": {
-    "message": "Hey! Er is een nieuwe versie beschikbaar."
+    "message": "Hey! There's a newer version available."
   },
   "download": {
     "message": "Download"
@@ -45,7 +45,7 @@
     "message": "See releases"
   },
   "saving": {
-    "message": "Opslaan..."
+    "message": "Saving..."
   },
   "donateAppeal": {
     "message": "Hours of development and testing go into maintaining this extension. If you feel it's worth a couple bucks, you can buy my cats a snack."
